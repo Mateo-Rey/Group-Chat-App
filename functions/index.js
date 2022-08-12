@@ -10,4 +10,4 @@ app.use(express.json())
 app.get("/messages", getMessage);
 app.post("/add-message", createMessage);
 
-app.listen(5001)
+export const api = functions.https.onRequest(app)

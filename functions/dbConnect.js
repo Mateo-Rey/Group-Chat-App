@@ -6,7 +6,7 @@ import { credentials } from './dbsecrets.js'
 
 
 export function dbConnect() {
-    if (!getApps.length) {
+    if (!getApps().length) {
         initializeApp({
             credential: cert(credentials)
         })
