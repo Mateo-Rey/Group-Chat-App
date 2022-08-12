@@ -1,3 +1,5 @@
+import { dbConnect } from "./dbConnect.js";
+
 function handleError(err, res) {
     console.error(err);
     res.status(500).send(err);
