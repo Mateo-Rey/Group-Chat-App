@@ -30,3 +30,16 @@ function handleError(err, res) {
       .catch((err) => handleError(err, res));
   }
   
+  export function saveUserLogin(req, res) {
+    const newUser = req.body;
+    const db = dbConnect();
+    db.collection('users')
+      .add(newUser)
+      .then((doc) => {
+        res.status(201).send({
+          sucess: true,
+          id: doc.id,
+        });
+      })
+      .catch((err) => handleError(err, res))
+  }
