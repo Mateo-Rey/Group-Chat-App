@@ -1,3 +1,4 @@
+import { query } from "express";
 import { dbConnect } from "./dbConnect.js";
 
 function handleError(err, res) {
@@ -18,6 +19,7 @@ function handleError(err, res) {
   
   export function createMessage(req, res) {
     const newMessage = req.body;
+    newMessage.entryDate = new Date()
     const db = dbConnect();
     db.collection("messages")
       .add(newMessage)
