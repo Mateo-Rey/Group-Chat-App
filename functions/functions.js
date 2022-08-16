@@ -1,4 +1,3 @@
-import { query } from "express";
 import { dbConnect } from "./dbConnect.js";
 
 function handleError(err, res) {
@@ -12,6 +11,7 @@ function handleError(err, res) {
       .get()
       .then((collection) => {
         const messages = collection.docs.map((doc) => doc.data());
+        messages.sort((a,b) => a.entryDate < b.entryDate ? 1: -1)
         res.send(messages);
       })
       .catch((err) => handleError(err, res));
